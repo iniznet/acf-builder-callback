@@ -63,33 +63,35 @@ class FieldBuilder extends FieldBuilderBase
 
 	public function maybeCallback()
 	{
-		if (!isset($config['sanitization_cb']) && !isset($config['escape_cb'])) {
-			return;
-		}
-
-		$config = array_merge([
-            'type' => $this->type,
-        ], $this->getConfig());
+		$config = $this->getConfig();
 
 		$this->sanitizedValue($config['name'], $config['sanitization_cb'] ?? false);
 		$this->escapedValue($config['name'], $config['escape_cb'] ?? false);
 	}
 
+	/**
+	 * @param string $name Field Name
+	 * @param callable $callback
+	 */
 	public function sanitizedValue($name, $callback)
 	{
 		if (!is_callable($callback)) {
 			return;
 		}
 
-		add_filter('acf/update_value/type=' . $this->type . '/name=' . $name, $callback, 10, 4);
+		add_filter('acf/update_value/name=' . $name, $callback, 10, 4);
 	}
 
+	/**
+	 * @param string $name Field Name
+	 * @param callable $callback
+	 */
 	public function escapedValue($name, $callback)
 	{
 		if (!is_callable($callback)) {
 			return;
 		}
-		
-		add_filter('acf/load_value/type=' . $this->type . '/name=' . $name, $callback, 10, 3);
+
+		add_filter('acf/load_value/name=' . $name, $callback, 10, 3);
 	}
 }
