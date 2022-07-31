@@ -106,7 +106,7 @@ class FieldBuilder extends FieldBuilderBase
 		}
 
 		add_filter('acf/load_field/name=' . $name, function($field) use ($callback) {
-			$choices = $callback();
+			$choices = $callback($field);
 
 			if (!is_array($choices)) {
 				return $field;
