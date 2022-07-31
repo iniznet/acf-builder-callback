@@ -4,7 +4,7 @@ A package made for [ACF Builder](https://github.com/stoutlogic/acf-builder) exte
 
 ### Simple Example
 ```php
-$banner = new StoutLogic\AcfBuilder\FieldsBuilder('banner');
+$banner = new iniznet\AcfBuilderCallback\FieldsBuilder('banner');
 $banner
     ->addText('title', [
         'label' => 'Title',
@@ -67,7 +67,7 @@ If you're using the [ACF Composer](https://github.com/Log1x/acf-composer)
 namespace App\Fields;
 
 use Log1x\AcfComposer\Field;
-use StoutLogic\AcfBuilder\FieldsBuilder;
+use iniznet\AcfBuilderCallback\FieldsBuilder;
 
 class Example extends Field
 {
