@@ -57,23 +57,23 @@ class FieldBuilder extends FieldBuilderBase
     {
         parent::__construct($name, $type, $config);
 
-		/** Do sanitization_cb and escape_cb */
-		$this->maybeCallback();
+		$this->doCallback();
     }
 
-	public function maybeCallback()
+	public function doCallback()
 	{
 		$config = $this->getConfig();
 
-		$this->sanitizedValue($config['name'], $config['sanitization_cb'] ?? false);
-		$this->escapedValue($config['name'], $config['escape_cb'] ?? false);
+		$this->sanitizationCallback($config['name'], $config['sanitization_cb'] ?? false);
+		$this->escapeCallback($config['name'], $config['escape_cb'] ?? false);
+		$this->choiceCallback($config['name'], $config['choices_cb'] ?? false);
 	}
 
 	/**
 	 * @param string $name Field Name
 	 * @param callable $callback
 	 */
-	public function sanitizedValue($name, $callback)
+	public function sanitizationCallback($name, $callback)
 	{
 		if (!is_callable($callback)) {
 			return;
@@ -86,12 +86,33 @@ class FieldBuilder extends FieldBuilderBase
 	 * @param string $name Field Name
 	 * @param callable $callback
 	 */
-	public function escapedValue($name, $callback)
+	public function escapeCallback($name, $callback)
 	{
 		if (!is_callable($callback)) {
 			return;
 		}
 
 		add_filter('acf/load_value/name=' . $name, $callback, 10, 3);
+	}
+
+	/**
+	 * @param string $name Field Name
+	 * @param callable $callback
+	 */
+	public function choiceCallback($name, $callback)
+	{
+		if (!is_callable($callback)) {
+			return;
+		}
+
+		add_filter('acf/load_field/name=' . $name, function($field) use ($callback) {
+			$choices = $callback();
+
+			if (!is_array($choices)) {
+				return $field;
+			}
+
+			$field['choices'] = array_merge($field['choices'], $choices);
+		}, 10);
 	}
 }
