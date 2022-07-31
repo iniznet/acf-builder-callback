@@ -66,7 +66,7 @@ class FieldBuilder extends FieldBuilderBase
 
 		$this->sanitizationCallback($config['name'], $config['sanitization_cb'] ?? false);
 		$this->escapeCallback($config['name'], $config['escape_cb'] ?? false);
-		$this->choiceCallback($config['name'], $config['choices_cb'] ?? false);
+		$this->choicesCallback($config['name'], $config['choices_cb'] ?? false);
 	}
 
 	/**
@@ -99,7 +99,7 @@ class FieldBuilder extends FieldBuilderBase
 	 * @param string $name Field Name
 	 * @param callable $callback
 	 */
-	public function choiceCallback($name, $callback)
+	public function choicesCallback($name, $callback)
 	{
 		if (!is_callable($callback)) {
 			return;
