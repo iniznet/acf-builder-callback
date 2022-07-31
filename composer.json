@@ -1,8 +1,14 @@
 {
     "name": "iniznet/acf-builder-callback",
     "type": "package",
-    "license": "MIT",
     "description": "Build fields with ACF builder and sanitize-escape callback",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "niznet",
+            "email": "iniznet@gmail.com"
+        }
+    ],
     "autoload": {
         "psr-4" : {
             "iniznet\\AcfBuilderCallback\\" : "src/"
