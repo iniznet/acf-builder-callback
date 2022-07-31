@@ -1,0 +1,23 @@
+{
+    "name": "iniznet/acf-builder-callback",
+    "type": "package",
+    "license": "MIT",
+    "description": "Build fields with ACF builder and sanitize-escape callback",
+    "autoload": {
+        "psr-4" : {
+            "iniznet\\AcfBuilderCallback\\" : "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4" : {
+            "iniznet\\AcfBuilderCallback\\Tests\\" : "tests/"
+        }
+    },
+    "require": {
+        "php": "^7.4|^8.0",
+        "stoutlogic/acf-builder": "^1.12"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
