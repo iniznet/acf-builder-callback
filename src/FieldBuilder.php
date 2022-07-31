@@ -113,6 +113,8 @@ class FieldBuilder extends FieldBuilderBase
 			}
 
 			$field['choices'] = array_merge($field['choices'], $choices);
+
+			return $field;
 		}, 10);
 	}
 }
