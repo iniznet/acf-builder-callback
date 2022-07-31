@@ -49,7 +49,6 @@ function sanitize_greater_than_30($value, $post_id, $field, $original) {
 * @param mixed         $value      The value of the title field.
 * @param int|string    $post_id    The post ID.
 * @param array         $field      The field settings.
-* @param mixed         $original   The original value before modification.
 * 
 * @return mixed                    The escaped value.
 */
