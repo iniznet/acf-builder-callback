@@ -1,6 +1,6 @@
 # ACF Builder Callback
 
-A package made for [ACF Builder](https://github.com/stoutlogic/acf-builder) extension to quickly create ACF configuration with sanitization and escape callback within builder.
+A package made for [ACF Builder](https://github.com/stoutlogic/acf-builder) extension to quickly create ACF configuration with callback within builder.
 
 ### Simple Example
 ```php
