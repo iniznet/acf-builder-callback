@@ -106,7 +106,10 @@ class Example extends Field
 ```
 
 ## TODO
-- [x] Field sanitization and escaping callback
+- [x] Field `sanitization_cb` callback
+- [x] Field `escape_cb` callback
+- [x] Field `choices_cb` callback, expect an array of choices as return value
+- [x] Field `default_value_cb` callback
 - [ ] ?
 
 ## Requirements
