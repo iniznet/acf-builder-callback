@@ -64,9 +64,23 @@ class FieldBuilder extends FieldBuilderBase
 	{
 		$config = $this->getConfig();
 
+		$this->defaultValueCallback($config['name'], $config['default_value_cb'] ?? false);
 		$this->sanitizationCallback($config['name'], $config['sanitization_cb'] ?? false);
 		$this->escapeCallback($config['name'], $config['escape_cb'] ?? false);
 		$this->choicesCallback($config['name'], $config['choices_cb'] ?? false);
+	}
+
+	/**
+	 * @param string $name Field Name
+	 * @param callable $callback
+	 */
+	public function defaultValueCallback($name, $callback)
+	{
+		if (!is_callable($callback)) {
+			return;
+		}
+
+		add_filter('acf/update_value/name=' . $name, $callback, 10, 4);
 	}
 
 	/**
