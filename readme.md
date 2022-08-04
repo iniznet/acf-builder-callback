@@ -4,7 +4,7 @@ A package made for [ACF Builder](https://github.com/stoutlogic/acf-builder) exte
 
 ### Simple Example
 ```php
-$banner = new iniznet\AcfBuilderCallback\FieldsBuilder('banner');
+$banner = new StoutLogic\AcfBuilder\FieldsBuilder('banner');
 $banner
     ->addText('title', [
         'label' => 'Title',
@@ -58,6 +58,9 @@ function escape_greater_than_30($value, $post_id, $field, $original) {
     }
     return '';
 }
+
+// Call below somewhere within your application especially during initialization.
+iniznet\AcfBuilderCallback\FieldCallback::run();
 ```
 
 If you're using the [ACF Composer](https://github.com/Log1x/acf-composer)
@@ -67,7 +70,7 @@ If you're using the [ACF Composer](https://github.com/Log1x/acf-composer)
 namespace App\Fields;
 
 use Log1x\AcfComposer\Field;
-use iniznet\AcfBuilderCallback\FieldsBuilder;
+use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class Example extends Field
 {
@@ -103,6 +106,9 @@ class Example extends Field
         return $example->build();
     }
 }
+
+// Call below somewhere within your application especially during initialization.
+iniznet\AcfBuilderCallback\FieldCallback::run();
 ```
 
 ## TODO
