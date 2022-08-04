@@ -54,6 +54,9 @@ class FieldCallback
 			return;
 		}
 
+		/**
+		 * @param array $field Field configuration
+		 */
 		add_filter('acf/load_field/name=' . $name, function ($field) use ($callback) {
 			$choices = $callback($field);
 
