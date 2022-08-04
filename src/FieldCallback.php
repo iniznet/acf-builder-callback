@@ -72,13 +72,13 @@ class FieldCallback
 		/**
 		 * @param array $field Field configuration
 		 */
-		add_filter('acf/load_field', function($field) {
+		add_filter('acf/load_field', function ($field) {
 			self::defaultValueCallback($field['name'], $field['default_value_cb'] ?? false);
 			self::sanitizationCallback($field['name'], $field['sanitization_cb'] ?? false);
 			self::escapeCallback($field['name'], $field['escape_cb'] ?? false);
 			self::choicesCallback($field['name'], $field['choices_cb'] ?? false);
 
-            return $field;
+			return $field;
 		});
 	}
 }
