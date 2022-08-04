@@ -77,6 +77,8 @@ class FieldCallback
 			self::sanitizationCallback($field['name'], $field['sanitization_cb'] ?? false);
 			self::escapeCallback($field['name'], $field['escape_cb'] ?? false);
 			self::choicesCallback($field['name'], $field['choices_cb'] ?? false);
+
+            return $field;
 		});
 	}
 }
