@@ -31,11 +31,10 @@ add_action('acf/init', function() use ($banner) {
  * @param mixed         $value      The value of the title field.
  * @param int|string    $post_id    The post ID.
  * @param array         $field      The field settings.
- * @param mixed         $original   The original value before modification.
  * 
  * @return mixed                    The sanitized value.
  */
-function sanitize_greater_than_30($value, $post_id, $field, $original) {
+function sanitize_greater_than_30($value, $post_id, $field) {
     if (strlen($value) > 30) {
         return $value;
     }
@@ -52,7 +51,7 @@ function sanitize_greater_than_30($value, $post_id, $field, $original) {
 * 
 * @return mixed                    The escaped value.
 */
-function escape_greater_than_30($value, $post_id, $field, $original) {
+function escape_greater_than_30($value, $post_id, $field) {
     if (strlen($value) > 30) {
         return esc_html($value);
     }
