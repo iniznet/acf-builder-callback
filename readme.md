@@ -115,7 +115,8 @@ iniznet\AcfBuilderCallback\FieldCallback::run();
 - [x] Field `escape_cb` callback
 - [x] Field `choices_cb` callback, expect an array of choices as return value
 - [x] Field `default_value_cb` callback
-- [ ] ?
+- [x] Refactor package to standalone & doesn't extending ACF Builder as child class
+- [ ] Refactor package again but with best practices instead of the current one
 
 ## Requirements
 PHP 7.4 through 8.0 Tested.
