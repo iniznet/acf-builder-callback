@@ -15,7 +15,13 @@ class FieldCallback
 			return;
 		}
 
-		add_filter('acf/update_value/name=' . $name, $callback, 10, 4);
+		add_filter('acf/load_value/name=' . $name, function($value, $postId, $field) use ($callback) {
+            if ($value) {
+                return $value;
+            }
+
+            return $callback($value, $postId, $field);
+        }, 10, 4);
 	}
 
 	/**
@@ -57,7 +63,7 @@ class FieldCallback
 		/**
 		 * @param array $field Field configuration
 		 */
-		add_filter('acf/load_field/name=' . $name, function ($field) use ($callback) {
+		add_filter('acf/prepare_field/name=' . $name, function ($field) use ($callback) {
 			$choices = $callback($field);
 
 			if (!is_array($choices)) {
