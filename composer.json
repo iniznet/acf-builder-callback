@@ -24,6 +24,6 @@
         "stoutlogic/acf-builder": "^1.12"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "9.5.25"
     }
 }
