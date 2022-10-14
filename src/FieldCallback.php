@@ -70,7 +70,7 @@ class FieldCallback
 				return $field;
 			}
 
-			$field['choices'] = array_merge($field['choices'], $choices);
+			$field['choices'] = array_replace($field['choices'], $choices);
 
 			return $field;
 		});
